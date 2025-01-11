@@ -18,74 +18,14 @@ resource "azurerm_subnet" "azure-transit-vnet-subnet-1" {
   virtual_network_name = azurerm_virtual_network.azure-transit-vnet.name
   address_prefixes     = ["10.100.0.0/24"]
 }
-#
-# resource "azurerm_subnet" "azure-lz-subnet-2" {
-#   name                 = "azure-lz-subnet-2"
-#   resource_group_name  = var.lab-rg
-#   virtual_network_name = azurerm_virtual_network.azure-transit-vnet.name
-#   address_prefixes     = ["10.101.2.0/24"]
-# }
-#
-# resource "azurerm_subnet" "azure-lz-subnet-3" {
-#   name                 = "azure-lz-subnet-3"
-#   resource_group_name  = var.lab-rg
-#   virtual_network_name = azurerm_virtual_network.azure-transit-vnet.name
-#   address_prefixes     = ["10.101.3.0/24"]
-# }
-#
-# resource "azurerm_subnet" "azure-lz-subnet-4" {
-#   name                 = "azure-lz-subnet-4"
-#   resource_group_name  = var.lab-rg
-#   virtual_network_name = azurerm_virtual_network.azure-transit-vnet.name
-#   address_prefixes     = ["10.101.4.0/24"]
-# }
-#
-# resource "azurerm_subnet" "azure-lz-subnet-5" {
-#   name                 = "azure-lz-subnet-5"
-#   resource_group_name  = var.lab-rg
-#   virtual_network_name = azurerm_virtual_network.azure-transit-vnet.name
-#   address_prefixes     = ["10.101.5.0/24"]
-# }
-#
-# # Gateway subnet for Azure Route Server
-# resource "azurerm_subnet" "azure-lz-subnet-ars" {
-#   name                 = "RouteServerSubnet"
-#   resource_group_name  = var.lab-rg
-#   virtual_network_name = azurerm_virtual_network.azure-transit-vnet.name
-#   address_prefixes     = ["10.100.1.0/24"]
-# }
-# #
+
 # NSG associated to VLANs
 resource "azurerm_subnet_network_security_group_association" "azure-lz-subnet-1" {
   network_security_group_id = azurerm_network_security_group.allowall-nsg.id
   subnet_id                 = azurerm_subnet.azure-transit-vnet-subnet-1.id
 
 }
-#
-# resource "azurerm_subnet_network_security_group_association" "azure-lz-subnet-2" {
-#   network_security_group_id = azurerm_network_security_group.allowall-nsg.id
-#   subnet_id                 = azurerm_subnet.azure-lz-subnet-2.id
-#
-# }
-#
-# resource "azurerm_subnet_network_security_group_association" "azure-lz-subnet-3" {
-#   network_security_group_id = azurerm_network_security_group.allowall-nsg.id
-#   subnet_id                 = azurerm_subnet.azure-lz-subnet-3.id
-#
-# }
-#
-# resource "azurerm_subnet_network_security_group_association" "azure-lz-subnet-4" {
-#   network_security_group_id = azurerm_network_security_group.allowall-nsg.id
-#   subnet_id                 = azurerm_subnet.azure-lz-subnet-4.id
-#
-# }
-#
-# resource "azurerm_subnet_network_security_group_association" "azure-lz-subnet-5" {
-#   network_security_group_id = azurerm_network_security_group.allowall-nsg.id
-#   subnet_id                 = azurerm_subnet.azure-lz-subnet-5.id
-#
-# }
-#
+
 # ##########
 # #  Azure Transit Zone VM
 # ##########
